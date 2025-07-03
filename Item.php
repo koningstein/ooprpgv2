@@ -19,4 +19,40 @@ class Item
     {
         return "Name: {$this->name} \nType: {$this->type} \nValue: {$this->value} \nAttack Bonus: {$this->attackBonus} \nDefence Bonus: {$this->defenceBonus} \nHealth Bonus: {$this->healthBonus} \nSpecial Effect: {$this->specialEffect}";
     }
+
+    public function setName($newName)
+    {
+        if (empty($newName)) {
+            return "Error: Name cannot be empty.";
+        }
+        $this->name = $newName;
+        return "Name set successfully.";
+    }
+
+    public function setValue($newValue)
+    {
+        if ($newValue < 0) {
+            return "Error: Value cannot be negative.";
+        }
+        $this->value = $newValue;
+        return "Value set successfully.";
+    }
+
+    public function setAttackBonus($newBonus)
+    {
+        if ($newBonus < 0) {
+            return "Error: Attack bonus cannot be negative.";
+        }
+        $this->attackBonus = $newBonus;
+        return "Attack bonus set successfully.";
+    }
+
+    public function setDefenseBonus($newBonus)
+    {
+        if ($newBonus < 0) {
+            return "Error: Defense bonus cannot be negative.";
+        }
+        $this->defenceBonus = $newBonus;
+        return "Defense bonus set successfully.";
+    }
 }
