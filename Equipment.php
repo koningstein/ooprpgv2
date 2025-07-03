@@ -2,5 +2,6 @@
 
 class Equipment
 {
-
+    public $equippedWeapon;
+    public $equippedArmor;
 }
