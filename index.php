@@ -32,8 +32,19 @@ $sword->healthBonus = 0;
 $sword->specialEffect = 'None';
 
 echo "<pre>";
-var_dump($hero);
-var_dump($heroStats);
-var_dump($heroEquipment);
-var_dump($heroWallet);
-var_dump($sword);
+echo "Character Info:\n";
+$hero->displayInfo();
+echo "\nCharacter Stats:\n";
+$heroStats->displayStats();
+echo "\nEquipment:\n";
+$heroEquipment->displayEquipment();
+echo "\nWallet:\n";
+$heroWallet->displayGold();
+echo "\nItem Info:\n";
+$sword->displayItem();
+
+//var_dump($hero);
+//var_dump($heroStats);
+//var_dump($heroEquipment);
+//var_dump($heroWallet);
+//var_dump($sword);
