@@ -4,6 +4,11 @@ class Wallet
 {
     public $gold;
 
+    public function __construct($gold = 100)
+    {
+        $this->gold = $gold;
+    }
+
     public function displayGold()
     {
         echo "Gold: {$this->gold}\n";

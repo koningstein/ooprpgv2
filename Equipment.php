@@ -5,6 +5,12 @@ class Equipment
     public $equippedWeapon;
     public $equippedArmor;
 
+    public function __construct($equippedWeapon = null, $equippedArmor = null)
+    {
+        $this->equippedWeapon = $equippedWeapon;
+        $this->equippedArmor = $equippedArmor;
+    }
+
     public function displayEquipment()
     {
         $weapon = $this->equippedWeapon ? $this->equippedWeapon : 'None';

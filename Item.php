@@ -10,6 +10,17 @@ class Item
     public $healthBonus;
     public $specialEffect;
 
+    public function __construct($name, $type, $value, $attackBonus = 0, $defenseBonus =0, $healthBonus = 0, $specialEffect = "")
+    {
+        $this->name = $name;
+        $this->type = $type;
+        $this->value = $value;
+        $this->attackBonus = $attackBonus;
+        $this->defenceBonus = $defenseBonus;
+        $this->healthBonus = $healthBonus;
+        $this->specialEffect = $specialEffect;
+    }
+
     public function displayItem()
     {
         echo $this->toString() . "\n";
