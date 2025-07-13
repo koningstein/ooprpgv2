@@ -55,4 +55,40 @@ class Item
         $this->defenceBonus = $newBonus;
         return "Defense bonus set successfully.";
     }
+
+    // --- Getters ---
+    public function getName()
+    {
+        return ucfirst($this->name);
+    }
+
+    public function getType()
+    {
+        return ucfirst($this->type);
+    }
+
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    public function getAttackBonus()
+    {
+        return $this->attackBonus;
+    }
+
+    public function getDefenseBonus()
+    {
+        return $this->defenceBonus;
+    }
+
+    public function getHealthBonus()
+    {
+        return $this->healthBonus;
+    }
+
+    public function getSpecialEffect()
+    {
+        return !empty($this->specialEffect) ? $this->specialEffect : "No special effect";
+    }
 }

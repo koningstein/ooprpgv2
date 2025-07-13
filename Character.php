@@ -27,4 +27,14 @@ class Character
         $this->role = $newRole;
         return "Role set successfully.";
     }
+
+    public function getName()
+    {
+        return ucfirst($this->name);
+    }
+
+    public function getRole()
+    {
+        return ucfirst($this->role);
+    }
 }
