@@ -17,4 +17,9 @@ class Wallet
         $this->gold = $newGold;
         return "Gold set successfully.";
     }
+
+    public function getGold()
+    {
+        return $this->gold;
+    }
 }

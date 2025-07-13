@@ -37,4 +37,19 @@ class CharacterStats
         $this->defense = $newDefense;
         return "Defense set successfully.";
     }
+
+    public function getHealth()
+    {
+        return $this->health;
+    }
+
+    public function getAttack()
+    {
+        return $this->attack;
+    }
+
+    public function getDefense()
+    {
+        return $this->defense;
+    }
 }

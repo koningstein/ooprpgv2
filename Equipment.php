@@ -29,4 +29,14 @@ class Equipment
         $this->equippedArmor = $armor;
         return "Equipped armor set successfully.";
     }
+
+    public function getEquippedWeapon()
+    {
+        return $this->equippedWeapon !== null ? $this->equippedWeapon : "No weapon equipped";
+    }
+
+    public function getEquippedArmor()
+    {
+        return $this->equippedArmor !== null ? $this->equippedArmor : "No armor equipped";
+    }
 }
