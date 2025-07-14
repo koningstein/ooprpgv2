@@ -2,24 +2,15 @@
 
 class Item
 {
-    public $name;
-    public $type;
-    public $value;
-    public $attackBonus;
-    public $defenceBonus;
-    public $healthBonus;
-    public $specialEffect;
-
-    public function __construct($name, $type, $value, $attackBonus = 0, $defenseBonus =0, $healthBonus = 0, $specialEffect = "")
-    {
-        $this->name = $name;
-        $this->type = $type;
-        $this->value = $value;
-        $this->attackBonus = $attackBonus;
-        $this->defenceBonus = $defenseBonus;
-        $this->healthBonus = $healthBonus;
-        $this->specialEffect = $specialEffect;
-    }
+    public function __construct(
+        public $name,
+        public $type,
+        public $value,
+        public $attackBonus = 0,
+        public $defenceBonus = 0,
+        public $healthBonus = 0,
+        public $specialEffect = ""
+    ) {}
 
     public function displayItem()
     {

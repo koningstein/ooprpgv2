@@ -2,12 +2,9 @@
 
 class Wallet
 {
-    public $gold;
-
-    public function __construct($gold = 100)
-    {
-        $this->gold = $gold;
-    }
+    public function __construct(
+        public $gold = 100
+    ) {}
 
     public function displayGold()
     {

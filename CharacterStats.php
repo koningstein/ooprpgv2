@@ -2,16 +2,11 @@
 
 class CharacterStats
 {
-    public $health;
-    public $attack;
-    public $defense;
-
-    public function __construct($health, $attack, $defense)
-    {
-        $this->health = $health;
-        $this->attack = $attack;
-        $this->defense = $defense;
-    }
+    public function __construct(
+        public $health,
+        public $attack,
+        public $defense
+    ) {}
 
     public function displayStats()
     {
