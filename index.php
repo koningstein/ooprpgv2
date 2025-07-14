@@ -5,12 +5,7 @@
     th { background: #f0f0f0; }
 </style>
 <?php
-
-require_once "Character.php";
-require_once "CharacterStats.php";
-require_once "Equipment.php";
-require_once "Item.php";
-require_once "Wallet.php";
+require_once "autoload.php";
 
 // Existing hero
 $hero = new Character("Jaina", "Mage");
