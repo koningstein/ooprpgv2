@@ -1,5 +1,7 @@
 <?php
 
+namespace Game;
+
 class Wallet
 {
     public function __construct(
