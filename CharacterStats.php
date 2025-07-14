@@ -6,6 +6,13 @@ class CharacterStats
     public $attack;
     public $defense;
 
+    public function __construct($health, $attack, $defense)
+    {
+        $this->health = $health;
+        $this->attack = $attack;
+        $this->defense = $defense;
+    }
+
     public function displayStats()
     {
         echo "Health: {$this->health}\nAttack: {$this->attack}\nDefense: {$this->defense}\n";
