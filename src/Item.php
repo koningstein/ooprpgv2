@@ -1,5 +1,7 @@
 <?php
 
+namespace Game;
+
 class Item
 {
     public function __construct(

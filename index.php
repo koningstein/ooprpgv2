@@ -5,29 +5,31 @@
     th { background: #f0f0f0; }
 </style>
 <?php
+require_once "vendor/autoload.php";
 
-require_once "Character.php";
-require_once "CharacterStats.php";
-require_once "Equipment.php";
-require_once "Item.php";
-require_once "Wallet.php";
+use Game\Battle;
+use Game\Character;
+use Game\CharacterStats;
+use Game\Equipment;
+use Game\Item;
+use Game\Wallet;
 
 // Existing hero
-$hero = new Character("Jaina", "Mage");
 $heroStats = new CharacterStats(120, 35, 10);
+$hero = new Character("Jaina", "Mage", $heroStats);
 $heroEquipment = new Equipment("Magic Staff", "Mystic Robe");
 $heroWallet = new Wallet(250);
 $sword = new Item("Steel Sword", "Weapon", 30, 10, 0, 0, "None");
 
 // First new character set (named arguments, default values)
-$character1 = new Character(role: "Archer", name: "Aria");
-$stats1 = new CharacterStats(attack: 15, health: 80); // defense defaults to 5
+$stats1 = new CharacterStats(attack: 30, health: 110); // defense defaults to 5
+$character1 = new Character(role: "Archer", name: "Aria", stats: $stats1);
 $equipment1 = new Equipment(equippedArmor: null, equippedWeapon: "Longbow");
 $wallet1 = new Wallet(); // gold defaults to 100
-$item1 = new Item(type: "accessory", name: "Magic Ring", value: 250); // bonuses default to 0
+$item1 = new Item(type: "accessory", name: "Magic Ring", value: 250, attackBonus: 15); // bonuses default to 0
 
-$character2 = new Character(role: "Warrior", name: "Thorgar"); // named args, different order
 $stats2 = new CharacterStats(150, 20); // defense defaults to 5
+$character2 = new Character(role: "Warrior", name: "Thorgar", stats: $stats2); // named args, different order
 $equipment2 = new Equipment("Battle Axe", "Chainmail");
 $wallet2 = new Wallet(180);
 $item2 = new Item(name: "Health Potion", type: "consumable", value: 50, healthBonus: 30);
@@ -101,7 +103,9 @@ foreach ($characters as $c) {
 }
 echo "</table>";
 
-
+// Test Battle functionality
+$battle = new Battle();
+echo $battle->startFight($character1, $character2);
 
 //var_dump($hero);
 //var_dump($heroStats);

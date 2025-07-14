@@ -1,10 +1,13 @@
 <?php
 
+namespace Game;
+
 class Character
 {
     public function __construct(
         public $name,
-        public $role
+        public $role,
+        public $stats
     ) {}
 
     public function displayInfo()
@@ -38,5 +41,10 @@ class Character
     public function getRole()
     {
         return ucfirst($this->role);
+    }
+
+    public function getStats()
+    {
+        return $this->stats;
     }
 }

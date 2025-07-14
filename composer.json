@@ -1,0 +1,10 @@
+{
+    "name": "game/rpg-game",
+    "description": "Een RPG-game met objectgeorienteerde PHP",
+    "autoload": {
+        "psr-4": {
+            "Game\\": "src/"
+        }
+    },
+    "require": {}
+}
