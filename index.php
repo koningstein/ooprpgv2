@@ -87,7 +87,7 @@ foreach ($characters as $c) {
     echo "<td>" . $stats->getHealth() . "</td>";
     echo "<td>" . $stats->getAttack() . "</td>";
     echo "<td>" . $stats->getDefense() . "</td>";
-    echo "<td>" . (is_object($equip->getEquippedWeapon()) ? $equip->getEquippedWeapon()->getName() : $equip->getEquippedWeapon()) . "</td>";
+    echo "<td>" . $equip->getEquippedWeapon() . "</td>";
     echo "<td>" . $equip->getEquippedArmor() . "</td>";
     echo "<td>" . $wallet->getGold() . "</td>";
     echo "<td>" . $item->getName() . "</td>";
