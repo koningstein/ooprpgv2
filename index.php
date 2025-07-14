@@ -22,11 +22,11 @@ $heroWallet = new Wallet(250);
 $sword = new Item("Steel Sword", "Weapon", 30, 10, 0, 0, "None");
 
 // First new character set (named arguments, default values)
-$stats1 = new CharacterStats(attack: 15, health: 80); // defense defaults to 5
+$stats1 = new CharacterStats(attack: 30, health: 110); // defense defaults to 5
 $character1 = new Character(role: "Archer", name: "Aria", stats: $stats1);
 $equipment1 = new Equipment(equippedArmor: null, equippedWeapon: "Longbow");
 $wallet1 = new Wallet(); // gold defaults to 100
-$item1 = new Item(type: "accessory", name: "Magic Ring", value: 250); // bonuses default to 0
+$item1 = new Item(type: "accessory", name: "Magic Ring", value: 250, attackBonus: 15); // bonuses default to 0
 
 $stats2 = new CharacterStats(150, 20); // defense defaults to 5
 $character2 = new Character(role: "Warrior", name: "Thorgar", stats: $stats2); // named args, different order
