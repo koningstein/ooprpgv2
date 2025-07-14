@@ -1,6 +1,8 @@
 <?php
 spl_autoload_register(function ($class) {
-    $file = __DIR__ . '/' . $class . '.php';
+    $parts = explode('\\', $class);
+    $className = end($parts);
+    $file = __DIR__ . '/' . $className . '.php';
     if (file_exists($file)) {
         require_once $file;
     }

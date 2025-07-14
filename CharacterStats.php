@@ -1,5 +1,7 @@
 <?php
 
+namespace Game;
+
 class CharacterStats
 {
     public function __construct(
