@@ -26,7 +26,7 @@ $equipment1 = new Equipment(equippedArmor: null, equippedWeapon: "Longbow");
 $wallet1 = new Wallet(); // gold defaults to 100
 $item1 = new Item(type: "accessory", name: "Magic Ring", value: 250); // bonuses default to 0
 
-$character2 = new Character(role: "Warrior", name: "Bram"); // named args, different order
+$character2 = new Character(role: "Warrior", name: "Thorgar"); // named args, different order
 $stats2 = new CharacterStats(150, 20); // defense defaults to 5
 $equipment2 = new Equipment("Battle Axe", "Chainmail");
 $wallet2 = new Wallet(180);
