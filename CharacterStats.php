@@ -5,7 +5,7 @@ class CharacterStats
     public function __construct(
         public $health,
         public $attack,
-        public $defense
+        public $defense = 5
     ) {}
 
     public function displayStats()
