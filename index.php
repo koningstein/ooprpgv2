@@ -5,14 +5,14 @@
     th { background: #f0f0f0; }
 </style>
 <?php
-require_once "autoload.php";
+require_once "vendor/autoload.php";
 
+use Game\Battle;
 use Game\Character;
 use Game\CharacterStats;
 use Game\Equipment;
-use Game\Wallet;
 use Game\Item;
-use Game\Battle;
+use Game\Wallet;
 
 // Existing hero
 $heroStats = new CharacterStats(120, 35, 10);
