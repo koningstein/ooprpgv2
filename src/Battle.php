@@ -1,12 +1,17 @@
 <?php
 
 namespace Game;
-
+/**
+ * Handles turn-based battles between two characters and keeps a battle log.
+ */
 class Battle
 {
     public $battleLog = [];
     public $maxRounds = 10;
 
+    /**
+     * Simulates a fight between two characters and returns the battle log as HTML.
+     */
     public function startFight($fighter1, $fighter2)
     {
         $round = 1;
