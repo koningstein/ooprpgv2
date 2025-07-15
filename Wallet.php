@@ -9,12 +9,12 @@ class Wallet
        return "Gold: {$this->gold}\n";
     }
 
-    public function setGold($newGold)
+    public function setGold($gold)
     {
-        if ($newGold < 0) {
+        if ($gold < 0) {
             return "Error: Gold cannot be negative.";
         }
-        $this->gold = $newGold;
+        $this->gold = $gold;
         return "Gold set successfully.";
     }
 }
