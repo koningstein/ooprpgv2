@@ -9,12 +9,19 @@ require_once "Equipment.php";
 require_once "Item.php";
 require_once "Wallet.php";
 
+$jaina = new Character();
+$jaina->name = 'Jaina';
+$jaina->role = 'Warrior';
 $hero = new Character();
 echo "<p>" . $hero->setName("Arthas") . "</p>";         // valid
 echo "<p>" . $hero->setName("") . "</p>";               // invalid
 echo "<p>" . $hero->setRole("Warrior") . "</p>";        // valid
 echo "<p>" . $hero->setRole("") . "</p>";               // invalid
 
+$jainaStats = new CharacterStats();
+$jainaStats->health = 150;
+$jainaStats->attack = 20;
+$jainaStats->defense = 15;
 $heroStats = new CharacterStats();
 echo "<p>" . $heroStats->setHealth(100) . "</p>";       // valid
 echo "<p>" . $heroStats->setHealth(-10) . "</p>";       // invalid
@@ -23,16 +30,29 @@ echo "<p>" . $heroStats->setAttack(0) . "</p>";         // invalid
 echo "<p>" . $heroStats->setDefense(15) . "</p>";       // valid
 echo "<p>" . $heroStats->setDefense(0) . "</p>";        // invalid
 
+$jainaEquipment = new Equipment();
+$jainaEquipment->equippedWeapon = null; // or $sword if equipped
+$jainaEquipment->equippedArmor = null;
 $heroEquipment = new Equipment();
 echo "<p>" . $heroEquipment->setEquippedWeapon("Steel Sword") . "</p>"; // valid
 echo "<p>" . $heroEquipment->setEquippedWeapon(123) . "</p>";           // invalid
 echo "<p>" . $heroEquipment->setEquippedArmor("Iron Armor") . "</p>";   // valid
 echo "<p>" . $heroEquipment->setEquippedArmor([]) . "</p>";             // invalid
 
+$jainaWallet = new Wallet();
+$jainaWallet->gold = 50;
 $heroWallet = new Wallet();
 echo "<p>" . $heroWallet->setGold(50) . "</p>";         // valid
 echo "<p>" . $heroWallet->setGold(-5) . "</p>";         // invalid
 
+$jainaSword = new Item();
+$jainaSword->name = 'Steel Sword';
+$jainaSword->type = 'Weapon';
+$jainaSword->value = 30;
+$jainaSword->attackBonus = 10;
+$jainaSword->defenceBonus = 0;
+$jainaSword->healthBonus = 0;
+$jainaSword->specialEffect = 'None';
 $sword = new Item();
 echo "<p>" . $sword->setName("Steel Sword") . "</p>";   // valid
 echo "<p>" . $sword->setName("") . "</p>";              // invalid
@@ -48,18 +68,18 @@ $sword->specialEffect = 'None';
 
 echo "<pre>";
 echo "Character Info:\n";
-$hero->displayInfo();
+$jaina->displayInfo();
 echo "\nCharacter Stats:\n";
-$heroStats->displayStats();
+$jainaStats->displayStats();
 echo "\nEquipment:\n";
-$heroEquipment->displayEquipment();
+$jainaEquipment->displayEquipment();
 echo "\nWallet:\n";
-$heroWallet->displayGold();
+$jainaWallet->displayGold();
 echo "\nItem Info:\n";
-$sword->displayItem();
+$jainaSword->displayItem();
 
-//var_dump($hero);
-//var_dump($heroStats);
-//var_dump($heroEquipment);
-//var_dump($heroWallet);
-//var_dump($sword);
+//var_dump($jaina);
+//var_dump($jainaStats);
+//var_dump($jainaEquipment);
+//var_dump($jainaWallet);
+//var_dump($jainaSword);
