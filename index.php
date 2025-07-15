@@ -10,11 +10,11 @@ require_once "Item.php";
 require_once "Wallet.php";
 
 
-$hero = new Character("Jaina", "Mage");
-$heroStats = new CharacterStats(120, 35, 10);
-$heroEquipment = new Equipment("Magic Staff", "Mystic Robe");
-$heroWallet = new Wallet(250);
-$sword = new Item("Steel Sword", "Weapon", 30, 10, 0, 0, "None");
+$jaina = new Character("Jaina", "Warrior");
+$jainaStats = new CharacterStats(150, 20, 15);
+$jainaEquipment = new Equipment(null, null);
+$jainaWallet = new Wallet(100);
+$jainaSword = new Item("Steel Sword", "Weapon", 30, 10, 0, 0, "None");
 
 
 echo "<pre>";
