@@ -7,34 +7,29 @@ require_once "Item.php";
 require_once "Wallet.php";
 
 $jaina = new Character();
+$jaina->name = 'Jaina';
+$jaina->role = 'Warrior';
+
 $jainaStats = new CharacterStats();
+$jainaStats->health = 150;
+$jainaStats->attack = 20;
+$jainaStats->defense = 15;
+
 $jainaEquipment = new Equipment();
+$jainaEquipment->equippedWeapon = null; // or $sword if equipped
+$jainaEquipment->equippedArmor = null;
+
 $jainaWallet = new Wallet();
+$jainaWallet->gold = 50;
+
 $jainaSword = new Item();
-$hero = new Character();
-$hero->name = 'Arthas';
-$hero->role = 'Warrior';
-
-$heroStats = new CharacterStats();
-$heroStats->health = 100;
-$heroStats->attack = 20;
-$heroStats->defense = 15;
-
-$heroEquipment = new Equipment();
-$heroEquipment->equippedWeapon = null; // or $sword if equipped
-$heroEquipment->equippedArmor = null;
-
-$heroWallet = new Wallet();
-$heroWallet->gold = 50;
-
-$sword = new Item();
-$sword->name = 'Steel Sword';
-$sword->type = 'Weapon';
-$sword->value = 30;
-$sword->attackBonus = 10;
-$sword->defenceBonus = 0;
-$sword->healthBonus = 0;
-$sword->specialEffect = 'None';
+$jainaSword->name = 'Steel Sword';
+$jainaSword->type = 'Weapon';
+$jainaSword->value = 30;
+$jainaSword->attackBonus = 10;
+$jainaSword->defenceBonus = 0;
+$jainaSword->healthBonus = 0;
+$jainaSword->specialEffect = 'None';
 
 echo "<pre>";
 var_dump($jaina);
