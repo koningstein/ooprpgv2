@@ -68,15 +68,15 @@ $sword->specialEffect = 'None';
 
 echo "<pre>";
 echo "Character Info:\n";
-$jaina->displayInfo();
+echo $jaina->displayInfo();
 echo "\nCharacter Stats:\n";
-$jainaStats->displayStats();
+echo $jainaStats->displayStats();
 echo "\nEquipment:\n";
-$jainaEquipment->displayEquipment();
+echo $jainaEquipment->displayEquipment();
 echo "\nWallet:\n";
-$jainaWallet->displayGold();
+echo $jainaWallet->displayGold();
 echo "\nItem Info:\n";
-$jainaSword->displayItem();
+echo $jainaSword->displayItem();
 
 //var_dump($jaina);
 //var_dump($jainaStats);

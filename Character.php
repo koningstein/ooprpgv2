@@ -7,7 +7,7 @@ class Character
 
     public function displayInfo()
     {
-        return  "Name: {$this->name}\nRole: {$this->role}\n";
+        return "Name: {$this->name}\nRole: {$this->role}\n";
     }
 
     public function setName($newName)
