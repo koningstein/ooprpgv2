@@ -12,7 +12,7 @@ class Item
 
     public function displayItem()
     {
-        echo $this->toString() . "\n";
+        return $this->toString() . "\n";
     }
 
     public function toString()

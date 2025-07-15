@@ -8,7 +8,7 @@ class CharacterStats
 
     public function displayStats()
     {
-        echo "Health: {$this->health}\nAttack: {$this->attack}\nDefense: {$this->defense}\n";
+        return "Health: {$this->health}\nAttack: {$this->attack}\nDefense: {$this->defense}\n";
     }
 
     public function setHealth($newHealth)
