@@ -6,15 +6,15 @@ require_once "Equipment.php";
 require_once "Item.php";
 require_once "Wallet.php";
 
-$hero = new Character();
-$heroStats = new CharacterStats();
-$heroEquipment = new Equipment();
-$heroWallet = new Wallet();
-$sword = new Item();
+$jaina = new Character();
+$jainaStats = new CharacterStats();
+$jainaEquipment = new Equipment();
+$jainaWallet = new Wallet();
+$jainaSword = new Item();
 
 echo "<pre>";
-var_dump($hero);
-var_dump($heroStats);
-var_dump($heroEquipment);
-var_dump($heroWallet);
-var_dump($sword);
+var_dump($jaina);
+var_dump($jainaStats);
+var_dump($jainaEquipment);
+var_dump($jainaWallet);
+var_dump($jainaSword);
