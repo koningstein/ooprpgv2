@@ -8,33 +8,33 @@ class CharacterStats
 
     public function displayStats()
     {
-        echo "Health: {$this->health}\nAttack: {$this->attack}\nDefense: {$this->defense}\n";
+        return "Health: {$this->health}\nAttack: {$this->attack}\nDefense: {$this->defense}\n";
     }
 
-    public function setHealth($newHealth)
+    public function setHealth($health)
     {
-        if ($newHealth < 0) {
+        if ($health < 0) {
             return "Error: Health cannot be negative.";
         }
-        $this->health = $newHealth;
+        $this->health = $health;
         return "Health set successfully.";
     }
 
-    public function setAttack($newAttack)
+    public function setAttack($attack)
     {
-        if ($newAttack <= 0) {
+        if ($attack <= 0) {
             return "Error: Attack must be greater than 0.";
         }
-        $this->attack = $newAttack;
+        $this->attack = $attack;
         return "Attack set successfully.";
     }
 
-    public function setDefense($newDefense)
+    public function setDefense($defense)
     {
-        if ($newDefense <= 0) {
+        if ($defense <= 0) {
             return "Error: Defense must be greater than 0.";
         }
-        $this->defense = $newDefense;
+        $this->defense = $defense;
         return "Defense set successfully.";
     }
 
