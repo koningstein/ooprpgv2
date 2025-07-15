@@ -6,6 +6,11 @@ require_once "Equipment.php";
 require_once "Item.php";
 require_once "Wallet.php";
 
+$jaina = new Character();
+$jainaStats = new CharacterStats();
+$jainaEquipment = new Equipment();
+$jainaWallet = new Wallet();
+$jainaSword = new Item();
 $hero = new Character();
 $hero->name = 'Arthas';
 $hero->role = 'Warrior';
@@ -32,8 +37,8 @@ $sword->healthBonus = 0;
 $sword->specialEffect = 'None';
 
 echo "<pre>";
-var_dump($hero);
-var_dump($heroStats);
-var_dump($heroEquipment);
-var_dump($heroWallet);
-var_dump($sword);
+var_dump($jaina);
+var_dump($jainaStats);
+var_dump($jainaEquipment);
+var_dump($jainaWallet);
+var_dump($jainaSword);
