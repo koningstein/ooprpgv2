@@ -11,15 +11,15 @@ class Wallet
 
     public function displayGold()
     {
-        echo "Gold: {$this->gold}\n";
+       return "Gold: {$this->gold}\n";
     }
 
-    public function setGold($newGold)
+    public function setGold($gold)
     {
-        if ($newGold < 0) {
+        if ($gold < 0) {
             return "Error: Gold cannot be negative.";
         }
-        $this->gold = $newGold;
+        $this->gold = $gold;
         return "Gold set successfully.";
     }
 

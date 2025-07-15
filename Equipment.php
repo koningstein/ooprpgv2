@@ -15,7 +15,7 @@ class Equipment
     {
         $weapon = $this->equippedWeapon ? $this->equippedWeapon : 'None';
         $armor = $this->equippedArmor ? $this->equippedArmor : 'None';
-        echo "Equipped Weapon: {$weapon}\nEquipped Armor: {$armor}\n";
+        return "Equipped Weapon: {$weapon}\nEquipped Armor: {$armor}\n";
     }
 
     public function setEquippedWeapon($weapon)

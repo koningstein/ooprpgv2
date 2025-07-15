@@ -13,10 +13,10 @@ class Character
 
     public function displayInfo()
     {
-        echo "Name: {$this->name}\nRole: {$this->role}\n";
+        return "Name: {$this->name}\nRole: {$this->role}\n";
     }
 
-    public function setName($newName)
+    public function setName($name)
     {
         if (empty($newName)) {
             return "Error: Name cannot be empty.";
@@ -25,7 +25,7 @@ class Character
         return "Name set successfully.";
     }
 
-    public function setRole($newRole)
+    public function setRole($role)
     {
         if (empty($newRole)) {
             return "Error: Role cannot be empty.";
