@@ -102,6 +102,7 @@ foreach ($characters as $character) {
 }
 echo "</table>";
 
+echo "<p>Summary = " . $aria->getSummary() . "</p>";
 // Test Battle functionality
 $battle = new Battle();
 echo $battle->startFight($aria, $thorgar);
