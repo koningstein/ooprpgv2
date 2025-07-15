@@ -33,17 +33,18 @@ $jainaSword->specialEffect = 'None';
 
 echo "<pre>";
 echo "Character Info:\n";
-$hero->displayInfo();
+$jaina->displayInfo();
 echo "\nCharacter Stats:\n";
-$heroStats->displayStats();
+$jainaStats->displayStats();
 echo "\nEquipment:\n";
-$heroEquipment->displayEquipment();
+$jainaEquipment->displayEquipment();
 echo "\nWallet:\n";
-$heroWallet->displayGold();
+$jainaWallet->displayGold();
 echo "\nItem Info:\n";
-$sword->displayItem();
-var_dump($jaina);
-var_dump($jainaStats);
-var_dump($jainaEquipment);
-var_dump($jainaWallet);
-var_dump($jainaSword);
+$jainaSword->displayItem();
+
+//var_dump($jaina);
+//var_dump($jainaStats);
+//var_dump($jainaEquipment);
+//var_dump($jainaWallet);
+//var_dump($jainaSword);
