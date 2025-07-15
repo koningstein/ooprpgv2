@@ -6,6 +6,6 @@ class Wallet
 
     public function displayGold()
     {
-        echo "Gold: {$this->gold}\n";
+        return "Gold: {$this->gold}\n";
     }
 }

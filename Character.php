@@ -7,6 +7,6 @@ class Character
 
     public function displayInfo()
     {
-        echo "Name: {$this->name}\nRole: {$this->role}\n";
+        return "Name: {$this->name}\nRole: {$this->role}\n";
     }
 }
