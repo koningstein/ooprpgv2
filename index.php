@@ -7,47 +7,47 @@
 <?php
 require_once "autoload.php";
 
-// Existing hero
-$hero = new Character("Jaina", "Mage");
-$heroStats = new CharacterStats(120, 35, 10);
-$heroEquipment = new Equipment("Magic Staff", "Mystic Robe");
-$heroWallet = new Wallet(250);
-$sword = new Item("Steel Sword", "Weapon", 30, 10, 0, 0, "None");
+
+$jaina = new Character("Jaina", "Warrior");
+$jainaStats = new CharacterStats(150, 20, 15);
+$jainaEquipment = new Equipment(null, null);
+$jainaWallet = new Wallet(100);
+$jainaSword = new Item("Steel Sword", "Weapon", 30, 10, 0, 0, "None");
 
 // First new character set (named arguments, default values)
-$character1 = new Character(role: "Archer", name: "Aria");
-$stats1 = new CharacterStats(attack: 30, health: 110); // defense defaults to 5
-$equipment1 = new Equipment(equippedArmor: null, equippedWeapon: "Longbow");
-$wallet1 = new Wallet(); // gold defaults to 100
-$item1 = new Item(type: "accessory", name: "Magic Ring", value: 250, attackBonus: 15); // bonuses default to 0
+$aria = new Character(role: "Archer", name: "Aria");
+$ariaStats = new CharacterStats(attack: 30, health: 110); // defense defaults to 5
+$ariaEquipment = new Equipment(equippedArmor: null, equippedWeapon: "Longbow");
+$ariaWallet = new Wallet(); // gold defaults to 100
+$ariaRing = new Item(type: "accessory", name: "Magic Ring", value: 250, attackBonus: 15); // bonuses default to 0
 
-$character2 = new Character(role: "Warrior", name: "Thorgar"); // named args, different order
-$stats2 = new CharacterStats(150, 20); // defense defaults to 5
-$equipment2 = new Equipment("Battle Axe", "Chainmail");
-$wallet2 = new Wallet(180);
-$item2 = new Item(name: "Health Potion", type: "consumable", value: 50, healthBonus: 30);
+$thorgar = new Character(role: "Mage", name: "Thorgar"); // named args, different order
+$thorgarStats = new CharacterStats(100, 30); // defense defaults to 5
+$thorgarEquipment = new Equipment("Magic Staff", "Wizard Robe");
+$thorgarWallet = new Wallet(180);
+$thorgarPotion = new Item(name: "Mana Potion", type: "consumable", value: 40, healthBonus: 20);
 
 $characters = [
     [
-        'character' => $hero,
-        'stats' => $heroStats,
-        'equipment' => $heroEquipment,
-        'wallet' => $heroWallet,
-        'item' => $sword
+        'character' => $jaina,
+        'stats' => $jainaStats,
+        'equipment' => $jainaEquipment,
+        'wallet' => $jainaWallet,
+        'item' => $jainaSword
     ],
     [
-        'character' => $character1,
-        'stats' => $stats1,
-        'equipment' => $equipment1,
-        'wallet' => $wallet1,
-        'item' => $item1
+        'character' => $aria,
+        'stats' => $ariaStats,
+        'equipment' => $ariaEquipment,
+        'wallet' => $ariaWallet,
+        'item' => $ariaRing
     ],
     [
-        'character' => $character2,
-        'stats' => $stats2,
-        'equipment' => $equipment2,
-        'wallet' => $wallet2,
-        'item' => $item2
+        'character' => $thorgar,
+        'stats' => $thorgarStats,
+        'equipment' => $thorgarEquipment,
+        'wallet' => $thorgarWallet,
+        'item' => $thorgarPotion
     ]
 ];
 
@@ -70,12 +70,12 @@ echo "<tr>
         <th>Item Special Effect</th>
       </tr>";
 
-foreach ($characters as $c) {
-    $char = $c['character'];
-    $stats = $c['stats'];
-    $equip = $c['equipment'];
-    $wallet = $c['wallet'];
-    $item = $c['item'];
+foreach ($characters as $character) {
+    $char = $character['character'];
+    $stats = $character['stats'];
+    $equip = $character['equipment'];
+    $wallet = $character['wallet'];
+    $item = $character['item'];
     echo "<tr>";
     echo "<td>" . $char->getName() . "</td>";
     echo "<td>" . $char->getRole() . "</td>";

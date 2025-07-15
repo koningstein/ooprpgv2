@@ -14,7 +14,7 @@ class Item
 
     public function displayItem()
     {
-        echo $this->toString() . "\n";
+        return $this->toString() . "\n";
     }
 
     public function toString()
@@ -22,39 +22,39 @@ class Item
         return "Name: {$this->name} \nType: {$this->type} \nValue: {$this->value} \nAttack Bonus: {$this->attackBonus} \nDefence Bonus: {$this->defenceBonus} \nHealth Bonus: {$this->healthBonus} \nSpecial Effect: {$this->specialEffect}";
     }
 
-    public function setName($newName)
+    public function setName($name)
     {
-        if (empty($newName)) {
+        if (empty($name)) {
             return "Error: Name cannot be empty.";
         }
-        $this->name = $newName;
+        $this->name = $name;
         return "Name set successfully.";
     }
 
-    public function setValue($newValue)
+    public function setValue($value)
     {
-        if ($newValue < 0) {
+        if ($value < 0) {
             return "Error: Value cannot be negative.";
         }
-        $this->value = $newValue;
+        $this->value = $value;
         return "Value set successfully.";
     }
 
-    public function setAttackBonus($newBonus)
+    public function setAttackBonus($bonus)
     {
-        if ($newBonus < 0) {
+        if ($bonus < 0) {
             return "Error: Attack bonus cannot be negative.";
         }
-        $this->attackBonus = $newBonus;
+        $this->attackBonus = $bonus;
         return "Attack bonus set successfully.";
     }
 
-    public function setDefenseBonus($newBonus)
+    public function setDefenseBonus($bonus)
     {
-        if ($newBonus < 0) {
+        if ($bonus < 0) {
             return "Error: Defense bonus cannot be negative.";
         }
-        $this->defenceBonus = $newBonus;
+        $this->defenceBonus = $bonus;
         return "Defense bonus set successfully.";
     }
 
