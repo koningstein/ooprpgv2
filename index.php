@@ -14,21 +14,21 @@ use Game\Wallet;
 use Game\Item;
 use Game\Battle;
 
-$jaina = new Character("Jaina", "Warrior");
 $jainaStats = new CharacterStats(150, 20, 15);
+$jaina = new Character("Jaina", "Warrior", $jainaStats);
 $jainaEquipment = new Equipment(null, null);
 $jainaWallet = new Wallet(100);
 $jainaSword = new Item("Steel Sword", "Weapon", 30, 10, 0, 0, "None");
 
 // First new character set (named arguments, default values)
-$aria = new Character(role: "Archer", name: "Aria");
 $ariaStats = new CharacterStats(attack: 30, health: 110); // defense defaults to 5
+$aria = new Character(role: "Archer", name: "Aria", stats: $ariaStats);
 $ariaEquipment = new Equipment(equippedArmor: null, equippedWeapon: "Longbow");
 $ariaWallet = new Wallet(); // gold defaults to 100
 $ariaRing = new Item(type: "accessory", name: "Magic Ring", value: 250, attackBonus: 15); // bonuses default to 0
 
-$thorgar = new Character(role: "Mage", name: "Thorgar"); // named args, different order
 $thorgarStats = new CharacterStats(100, 30); // defense defaults to 5
+$thorgar = new Character(role: "Mage", name: "Thorgar", stats: $thorgarStats); // named args, different order
 $thorgarEquipment = new Equipment("Magic Staff", "Wizard Robe");
 $thorgarWallet = new Wallet(180);
 $thorgarPotion = new Item(name: "Mana Potion", type: "consumable", value: 40, healthBonus: 20);
@@ -104,7 +104,7 @@ echo "</table>";
 
 // Test Battle functionality
 $battle = new Battle();
-echo $battle->startFight($character1, $character2);
+echo $battle->startFight($aria, $thorgar);
 
 //var_dump($hero);
 //var_dump($heroStats);
