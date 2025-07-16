@@ -6,12 +6,7 @@ namespace Game;
  */
 class Wallet
 {
-    /**
-     * Creates a new wallet with a starting gold amount.
-     */
-    public function __construct(
-        public $gold = 100
-    ) {}
+    public $gold = 100;
 
     /**
      * Displays the current gold amount as a string.
