@@ -4,15 +4,26 @@ namespace Game;
 
 class Item
 {
-    public function __construct(
-        public $name,
-        public $type,
-        public $value,
-        public $attackBonus = 0,
-        public $defenceBonus = 0,
-        public $healthBonus = 0,
-        public $specialEffect = ""
-    ) {}
+    public $name;
+    public $type;
+    public $value;
+    public $attackBonus = 0;
+    public $defenceBonus = 0;
+    public $healthBonus = 0;
+    public $specialEffect = "";
+
+    public function setItem($name, $type, $value, $attackBonus = 0, $defenseBonus = 0, $healthBonus = 0, $specialEffect = "")
+    {
+        $messages = [];
+        $messages[] = $this->setName($name);
+        $this->type = $type;
+        $messages[] = $this->setValue($value);
+        $messages[] = $this->setAttackBonus($attackBonus);
+        $messages[] = $this->setDefenseBonus($defenseBonus);
+        $this->healthBonus = $healthBonus;
+        $this->specialEffect = $specialEffect;
+        return implode(' ', $messages);
+    }
 
     public function displayItem()
     {

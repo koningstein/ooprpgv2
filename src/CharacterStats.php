@@ -4,11 +4,18 @@ namespace Game;
 
 class CharacterStats
 {
-    public function __construct(
-        public $health,
-        public $attack,
-        public $defense = 5
-    ) {}
+    public $health;
+    public $attack;
+    public $defense;
+
+    public function setStats($health, $attack, $defense)
+    {
+        $messages = [];
+        $messages[] = $this->setHealth($health);
+        $messages[] = $this->setAttack($attack);
+        $messages[] = $this->setDefense($defense);
+        return implode(' ', $messages);
+    }
 
     public function displayStats()
     {

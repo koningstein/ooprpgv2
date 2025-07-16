@@ -4,9 +4,7 @@ namespace Game;
 
 class Wallet
 {
-    public function __construct(
-        public $gold = 100
-    ) {}
+    public $gold = 100;
 
     public function displayGold()
     {
