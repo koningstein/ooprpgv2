@@ -9,6 +9,9 @@ class Equipment
     public $equippedWeapon = null;
     public $equippedArmor = null;
 
+    /**
+     * Sets the weapon and armor for an equipment
+     */
     public function setEquipment($weapon, $armor)
     {
         $messages = [];
@@ -17,6 +20,9 @@ class Equipment
         return implode(' ', $messages);
     }
 
+    /**
+     * Displays the weapon and armor in a string
+     */
     public function displayEquipment()
     {
         $weapon = $this->equippedWeapon ? $this->equippedWeapon : 'None';

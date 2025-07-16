@@ -10,6 +10,9 @@ class CharacterStats
     public $attack;
     public $defense;
 
+    /**
+     * Create statistics for a Character with health, attack and defense
+     */
     public function setStats($health, $attack, $defense)
     {
         $messages = [];
@@ -19,6 +22,9 @@ class CharacterStats
         return implode(' ', $messages);
     }
 
+    /**
+     * Displays the health, attach and defense values
+     */
     public function displayStats()
     {
         return "Health: {$this->health}\nAttack: {$this->attack}\nDefense: {$this->defense}\n";

@@ -12,6 +12,9 @@ class Character
     public $role;
     public $stats;
 
+    /**
+     * Create a character with name, role and statistics
+     */
     public function setCharacter($name, $role, $stats): string
     {
         $messages = [];
@@ -21,6 +24,9 @@ class Character
         return implode(' ', $messages);
     }
 
+    /**
+     * displays the name and role of a character in a string
+     */
     public function displayInfo()
     {
         return "Name: {$this->name}\nRole: {$this->role}\n";

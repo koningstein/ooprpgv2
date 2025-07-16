@@ -16,6 +16,9 @@ class Item
     public $healthBonus = 0;
     public $specialEffect = "";
 
+    /**
+     * Sets the name, type, value and bonusses for an Item
+     */
     public function setItem($name, $type, $value, $attackBonus = 0, $defenseBonus = 0, $healthBonus = 0, $specialEffect = "")
     {
         $messages = [];
@@ -29,6 +32,9 @@ class Item
         return implode(' ', $messages);
     }
 
+    /**
+     * creates a string from the object
+     */
     public function displayItem()
     {
         return $this->toString() . "\n";
