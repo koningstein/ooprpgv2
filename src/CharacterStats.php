@@ -6,17 +6,24 @@ namespace Game;
  */
 class CharacterStats
 {
-    /**
-     * Creates a new stats object with health, attack, and optional defense.
-     */
-    public function __construct(
-        public $health,
-        public $attack,
-        public $defense = 5
-    ) {}
+    public $health;
+    public $attack;
+    public $defense;
 
     /**
-     * Displays all stats as a string.
+     * Create statistics for a Character with health, attack and defense
+     */
+    public function setStats($health, $attack, $defense)
+    {
+        $messages = [];
+        $messages[] = $this->setHealth($health);
+        $messages[] = $this->setAttack($attack);
+        $messages[] = $this->setDefense($defense);
+        return implode(' ', $messages);
+    }
+
+    /**
+     * Displays the health, attach and defense values
      */
     public function displayStats()
     {

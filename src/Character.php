@@ -8,17 +8,24 @@ namespace Game;
  */
 class Character
 {
-    /**
-     * Creates a new character with a name, role, and stats.
-     */
-    public function __construct(
-        public $name,
-        public $role,
-        public $stats
-    ) {}
+    public $name;
+    public $role;
+    public $stats;
 
     /**
-     * Returns a string with the character's name and role.
+     * Create a character with name, role and statistics
+     */
+    public function setCharacter($name, $role, $stats): string
+    {
+        $messages = [];
+        $messages[] = $this->setName($name);
+        $messages[] = $this->setRole($role);
+        $this->stats = $stats;
+        return implode(' ', $messages);
+    }
+
+    /**
+     * displays the name and role of a character in a string
      */
     public function displayInfo()
     {
@@ -30,10 +37,10 @@ class Character
     */
     public function setName($name)
     {
-        if (empty($newName)) {
+        if (empty($name)) {
             return "Error: Name cannot be empty.";
         }
-        $this->name = $newName;
+        $this->name = $name;
         return "Name set successfully.";
     }
 
@@ -42,10 +49,10 @@ class Character
      */
     public function setRole($role)
     {
-        if (empty($newRole)) {
+        if (empty($role)) {
             return "Error: Role cannot be empty.";
         }
-        $this->role = $newRole;
+        $this->role = $role;
         return "Role set successfully.";
     }
 
