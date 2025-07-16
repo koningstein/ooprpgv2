@@ -6,17 +6,17 @@ namespace Game;
  */
 class Equipment
 {
-    /**
-     * Creates a new equipment set with optional weapon and armor.
-     */
-    public function __construct(
-        public $equippedWeapon = null,
-        public $equippedArmor = null
-    ) {}
+    public $equippedWeapon = null;
+    public $equippedArmor = null;
 
-    /**
-     * Displays the currently equipped weapon and armor.
-     */
+    public function setEquipment($weapon, $armor)
+    {
+        $messages = [];
+        $messages[] = $this->setEquippedWeapon($weapon);
+        $messages[] = $this->setEquippedArmor($armor);
+        return implode(' ', $messages);
+    }
+
     public function displayEquipment()
     {
         $weapon = $this->equippedWeapon ? $this->equippedWeapon : 'None';

@@ -14,24 +14,41 @@ use Game\Equipment;
 use Game\Item;
 use Game\Wallet;
 
-$jainaStats = new CharacterStats(150, 20, 15);
-$jaina = new Character("Jaina", "Warrior", $jainaStats);
-$jainaEquipment = new Equipment(null, null);
-$jainaWallet = new Wallet(100);
-$jainaSword = new Item("Steel Sword", "Weapon", 30, 10, 0, 0, "None");
+// Jaina
+$jainaStats = new CharacterStats();
+echo $jainaStats->setStats(150, 20, 15) . "<br>";
+$jaina = new Character();
+echo $jaina->setCharacter("Jaina", "Warrior", $jainaStats) . "<br>";
+$jainaEquipment = new Equipment();
+echo $jainaEquipment->setEquipment(null, null) . "<br>";
+$jainaWallet = new Wallet();
+echo $jainaWallet->setGold(100) . "<br>";
+$jainaSword = new Item();
+echo $jainaSword->setItem("Steel Sword", "Weapon", 30, 10, 0, 0, "None") . "<br>";
 
-// First new character set (named arguments, default values)
-$ariaStats = new CharacterStats(attack: 30, health: 110); // defense defaults to 5
-$aria = new Character(role: "Archer", name: "Aria", stats: $ariaStats);
-$ariaEquipment = new Equipment(equippedArmor: null, equippedWeapon: "Longbow");
-$ariaWallet = new Wallet(); // gold defaults to 100
-$ariaRing = new Item(type: "accessory", name: "Magic Ring", value: 250, attackBonus: 15); // bonuses default to 0
+// Aria
+$ariaStats = new CharacterStats();
+echo $ariaStats->setStats(110, 30, 5) . "<br>";
+$aria = new Character();
+echo $aria->setCharacter("Aria", "Archer", $ariaStats) . "<br>";
+$ariaEquipment = new Equipment();
+echo $ariaEquipment->setEquipment("Longbow", null) . "<br>";
+$ariaWallet = new Wallet();
+echo $ariaWallet->setGold(100) . "<br>";
+$ariaRing = new Item();
+echo $ariaRing->setItem("Magic Ring", "accessory", 250, 15) . "<br>";
 
-$thorgarStats = new CharacterStats(100, 30); // defense defaults to 5
-$thorgar = new Character(role: "Mage", name: "Thorgar", stats: $thorgarStats); // named args, different order
-$thorgarEquipment = new Equipment("Magic Staff", "Wizard Robe");
-$thorgarWallet = new Wallet(180);
-$thorgarPotion = new Item(name: "Mana Potion", type: "consumable", value: 40, healthBonus: 20);
+// Thorgar
+$thorgarStats = new CharacterStats();
+echo $thorgarStats->setStats(100, 30, 5) . "<br>";
+$thorgar = new Character();
+echo $thorgar->setCharacter("Thorgar", "Mage", $thorgarStats) . "<br>";
+$thorgarEquipment = new Equipment();
+echo $thorgarEquipment->setEquipment("Magic Staff", "Wizard Robe") . "<br>";
+$thorgarWallet = new Wallet();
+echo $thorgarWallet->setGold(180) . "<br>";
+$thorgarPotion = new Item();
+echo $thorgarPotion->setItem("Mana Potion", "consumable", 40, 0, 0, 20) . "<br>";
 
 $characters = [
     [
