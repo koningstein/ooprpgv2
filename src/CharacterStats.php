@@ -1,20 +1,38 @@
 <?php
 
 namespace Game;
-
+/**
+ * Manages the health, attack, and defense stats of a character.
+ */
 class CharacterStats
 {
-    public function __construct(
-        public $health,
-        public $attack,
-        public $defense = 5
-    ) {}
+    public $health;
+    public $attack;
+    public $defense;
 
+    /**
+     * Create statistics for a Character with health, attack and defense
+     */
+    public function setStats($health, $attack, $defense)
+    {
+        $messages = [];
+        $messages[] = $this->setHealth($health);
+        $messages[] = $this->setAttack($attack);
+        $messages[] = $this->setDefense($defense);
+        return implode(' ', $messages);
+    }
+
+    /**
+     * Displays the health, attach and defense values
+     */
     public function displayStats()
     {
         return "Health: {$this->health}\nAttack: {$this->attack}\nDefense: {$this->defense}\n";
     }
 
+    /**
+     * Sets the health stat to a new value.
+     */
     public function setHealth($health)
     {
         if ($health < 0) {
@@ -24,6 +42,9 @@ class CharacterStats
         return "Health set successfully.";
     }
 
+    /**
+     * Sets the attack stat to a new value.
+     */
     public function setAttack($attack)
     {
         if ($attack <= 0) {
@@ -33,6 +54,9 @@ class CharacterStats
         return "Attack set successfully.";
     }
 
+    /**
+     * Sets the defense stat to a new value.
+     */
     public function setDefense($defense)
     {
         if ($defense <= 0) {
@@ -42,16 +66,25 @@ class CharacterStats
         return "Defense set successfully.";
     }
 
+    /**
+     * Returns the current health stat.
+     */
     public function getHealth()
     {
         return $this->health;
     }
 
+    /**
+     * Returns the current attack stat.
+     */
     public function getAttack()
     {
         return $this->attack;
     }
 
+    /**
+     * Returns the current defense stat.
+     */
     public function getDefense()
     {
         return $this->defense;

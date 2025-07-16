@@ -1,18 +1,24 @@
 <?php
 
 namespace Game;
-
+/**
+ * Manages the gold amount for a character.
+ */
 class Wallet
 {
-    public function __construct(
-        public $gold = 100
-    ) {}
+    public $gold = 100;
 
+    /**
+     * Displays the current gold amount as a string.
+     */
     public function displayGold()
     {
        return "Gold: {$this->gold}\n";
     }
 
+    /**
+     * Sets the gold amount to a new value.
+     */
     public function setGold($gold)
     {
         if ($gold < 0) {
@@ -22,6 +28,9 @@ class Wallet
         return "Gold set successfully.";
     }
 
+    /**
+     * Returns the current gold amount.
+     */
     public function getGold()
     {
         return $this->gold;
