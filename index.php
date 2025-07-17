@@ -120,9 +120,21 @@ foreach ($characters as $character) {
 echo "</table>";
 
 echo "<p>Summary = " . $aria->getSummary() . "</p>";
+
+// Test takeDamage() on Aria
+echo "<p>Jaina health before damage: " . $jaina->getStats()->getHealth() . "</p>";
+$jaina->takeDamage(30);
+echo "<p>Jaina health after taking 10 damage: " . $jaina->getStats()->getHealth() . "</p>";
+$jaina->takeDamage(50);
+echo "<p>Jaina health after taking 50 damage: " . $jaina->getStats()->getHealth() . "</p>";
+$jaina->takeDamage(100);
+echo "<p>Jaina health after taking 100 damage: " . $jaina->getStats()->getHealth() . "</p>";
+
 // Test Battle functionality
 $battle = new Battle();
 echo $battle->startFight($aria, $thorgar);
+
+
 
 //var_dump($hero);
 //var_dump($heroStats);

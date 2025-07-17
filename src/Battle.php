@@ -11,8 +11,11 @@ class Battle
 
     /**
      * Simulates a fight between two characters and returns the battle log as HTML.
+     * @param Character $fighter1
+     * @param Character $fighter2
+     * @return string
      */
-    public function startFight($fighter1, $fighter2)
+    public function startFight($fighter1, $fighter2): string
     {
         $round = 1;
         $fighter1Stats = $fighter1->getStats();
