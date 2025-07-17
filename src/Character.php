@@ -11,6 +11,17 @@ class Character
     public string $name;
     public string $role;
     public CharacterStats $stats;
+    public Inventory $inventory;
+    public Equipment $equipment;
+
+    /**
+     * Character constructor initializes inventory and equipment.
+     */
+    public function __construct(int $maxInventorySlots = 10)
+    {
+        $this->inventory = new Inventory($maxInventorySlots);
+        $this->equipment = new Equipment();
+    }
 
     /**
      * Create a character with name, role and statistics
@@ -111,5 +122,59 @@ class Character
         $currentHealth = $this->stats->getHealth();
         $newHealth = max(0, $currentHealth - $amount);
         $this->stats->setHealth($newHealth);
+    }
+
+    /**
+     * Returns the Inventory object.
+     * @return Inventory
+     */
+    public function getInventory(): Inventory
+    {
+        return $this->inventory;
+    }
+
+    /**
+     * Returns the Equipment object.
+     * @return Equipment
+     */
+    public function getEquipment(): Equipment
+    {
+        return $this->equipment;
+    }
+
+    /**
+     * Equips a weapon if it is in inventory and of type 'weapon'.
+     * @param Item $weapon
+     * @return string
+     */
+    public function equipWeapon(Item $weapon): string
+    {
+        if (strtolower($weapon->getType()) !== "weapon") {
+            return "Item is not a weapon.";
+        }
+        $itemInInventory = $this->inventory->getItem($weapon->getName());
+        if (!$itemInInventory) {
+            return "Item not found in inventory.";
+        }
+        $this->equipment->setEquippedWeapon($weapon->getName());
+        return "Weapon '{$weapon->getName()}' equipped successfully.";
+    }
+
+    /**
+     * Equips armor if it is in inventory and of type 'armor'.
+     * @param Item $armor
+     * @return string
+     */
+    public function equipArmor(Item $armor): string
+    {
+        if (strtolower($armor->getType()) !== "armor") {
+            return "Item is not armor.";
+        }
+        $itemInInventory = $this->inventory->getItem($armor->getName());
+        if (!$itemInInventory) {
+            return "Item not found in inventory.";
+        }
+        $this->equipment->setEquippedArmor($armor->getName());
+        return "Armor '{$armor->getName()}' equipped successfully.";
     }
 }
