@@ -6,7 +6,7 @@ namespace Game;
  */
 class Wallet
 {
-    public $gold = 100;
+    public int $gold = 100;
 
     /**
      * Displays the current gold amount as a string.

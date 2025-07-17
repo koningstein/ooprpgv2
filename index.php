@@ -134,7 +134,9 @@ echo "<p>Jaina health after taking 100 damage: " . $jaina->getStats()->getHealth
 $battle = new Battle();
 echo $battle->startFight($aria, $thorgar);
 
-
+$battle2 = new Battle();
+$battle2->changeMaxRounds(4);
+echo $battle2->startFight($aria, $thorgar);
 
 //var_dump($hero);
 //var_dump($heroStats);
