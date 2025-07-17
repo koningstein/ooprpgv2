@@ -15,7 +15,7 @@ class Battle
      * @param Character $fighter2
      * @return string
      */
-    public function startFight($fighter1, $fighter2): string
+    public function startFight(Character $fighter1, Character $fighter2): string
     {
         $round = 1;
         $fighter1Stats = $fighter1->getStats();
