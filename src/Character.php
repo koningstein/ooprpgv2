@@ -8,9 +8,9 @@ namespace Game;
  */
 class Character
 {
-    public $name;
-    public $role;
-    public $stats;
+    public string $name;
+    public string $role;
+    public CharacterStats $stats;
 
     /**
      * Create a character with name, role and statistics

@@ -6,8 +6,8 @@ namespace Game;
  */
 class Battle
 {
-    public $battleLog = [];
-    public $maxRounds = 10;
+    public array $battleLog = [];
+    public int $maxRounds = 10;
 
     /**
      * Simulates a fight between two characters and returns the battle log as HTML.
@@ -57,4 +57,16 @@ class Battle
 
         return "<ul><li>" . implode("</li><li>", $this->battleLog) . "</li></ul>";
     }
+
+    /**
+     * Change the max rounds of a battle
+     * @param int $rounds
+     * @return void
+     */
+    public function changeMaxRounds(int $rounds): void
+    {
+        $this->maxRounds = $rounds;
+    }
+
+
 }

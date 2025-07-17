@@ -6,9 +6,9 @@ namespace Game;
  */
 class CharacterStats
 {
-    public $health;
-    public $attack;
-    public $defense;
+    public int $health;
+    public int $attack;
+    public int $defense;
 
     /**
      * Create statistics for a Character with health, attack and defense

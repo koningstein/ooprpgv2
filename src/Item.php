@@ -8,13 +8,13 @@ namespace Game;
  */
 class Item
 {
-    public $name;
-    public $type;
-    public $value;
-    public $attackBonus = 0;
-    public $defenceBonus = 0;
-    public $healthBonus = 0;
-    public $specialEffect = "";
+    public string $name;
+    public string $type;
+    public int $value;
+    public int $attackBonus = 0;
+    public int $defenceBonus = 0;
+    public int $healthBonus = 0;
+    public string $specialEffect = "";
 
     /**
      * Sets the name, type, value and bonusses for an Item
