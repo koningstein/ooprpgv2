@@ -9,6 +9,7 @@ class CharacterStats
     public int $health;
     public int $attack;
     public int $defense;
+    public ?int $originalHealth = null;
 
     /**
      * Create statistics for a Character with health, attack and defense
@@ -37,6 +38,7 @@ class CharacterStats
 
     /**
      * Sets the health stat to a new value.
+     * On first set, also sets originalHealth.
      * @param int $health
      * @return string
     */
@@ -46,7 +48,21 @@ class CharacterStats
             return "Error: Health cannot be negative.";
         }
         $this->health = $health;
+        if ($this->originalHealth === null) {
+            $this->originalHealth = $health;
+        }
         return "Health set successfully.";
+    }
+
+    /**
+     * Resets health to originalHealth.
+     * @return void
+     */
+    public function resetHealth(): void
+    {
+        if ($this->originalHealth !== null) {
+            $this->health = $this->originalHealth;
+        }
     }
 
     /**
