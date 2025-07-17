@@ -6,20 +6,23 @@ namespace Game;
  */
 class Wallet
 {
-    public $gold = 100;
+    public int $gold = 100;
 
     /**
      * Displays the current gold amount as a string.
+     * @return string
      */
-    public function displayGold()
+    public function displayGold(): string
     {
        return "Gold: {$this->gold}\n";
     }
 
     /**
      * Sets the gold amount to a new value.
+     * @param int $gold
+     * @return string
      */
-    public function setGold($gold)
+    public function setGold($gold): string
     {
         if ($gold < 0) {
             return "Error: Gold cannot be negative.";
@@ -30,8 +33,9 @@ class Wallet
 
     /**
      * Returns the current gold amount.
+     * @return int
      */
-    public function getGold()
+    public function getGold(): int
     {
         return $this->gold;
     }

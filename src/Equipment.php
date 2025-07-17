@@ -6,13 +6,16 @@ namespace Game;
  */
 class Equipment
 {
-    public $equippedWeapon = null;
-    public $equippedArmor = null;
+    public ?string $equippedWeapon = null;
+    public ?string $equippedArmor = null;
 
     /**
      * Sets the weapon and armor for an equipment
+     * @param string|null $weapon
+     * @param string|null $armor
+     * @return string
      */
-    public function setEquipment($weapon, $armor)
+    public function setEquipment($weapon, $armor): string
     {
         $messages = [];
         $messages[] = $this->setEquippedWeapon($weapon);
@@ -22,8 +25,9 @@ class Equipment
 
     /**
      * Displays the weapon and armor in a string
+     * @return string
      */
-    public function displayEquipment()
+    public function displayEquipment(): string
     {
         $weapon = $this->equippedWeapon ? $this->equippedWeapon : 'None';
         $armor = $this->equippedArmor ? $this->equippedArmor : 'None';
@@ -32,8 +36,10 @@ class Equipment
 
     /**
      * Sets the equipped weapon.
+     * @param string|null $weapon
+     * @return string
      */
-    public function setEquippedWeapon($weapon)
+    public function setEquippedWeapon($weapon): string
     {
         if (!is_string($weapon) && !is_null($weapon)) {
             return "Error: Weapon must be a string or null.";
@@ -44,8 +50,10 @@ class Equipment
 
     /**
      * Sets the equipped armor.
+     * @param string|null $armor
+     * @return string
      */
-    public function setEquippedArmor($armor)
+    public function setEquippedArmor($armor): string
     {
         if (!is_string($armor) && !is_null($armor)) {
             return "Error: Armor must be a string or null.";
@@ -56,6 +64,7 @@ class Equipment
 
     /**
      * Returns the currently equipped weapon.
+     * @return string
      */
     public function getEquippedWeapon()
     {
@@ -64,6 +73,7 @@ class Equipment
 
     /**
      * Returns the currently equipped armor.
+     * @return string
      */
     public function getEquippedArmor()
     {
