@@ -8,11 +8,11 @@ namespace Game;
  */
 class Character
 {
-    public string $name;
-    public string $role;
-    public CharacterStats $stats;
-    public Inventory $inventory;
-    public Equipment $equipment;
+    private string $name;
+    private string $role;
+    private CharacterStats $stats;
+    private Inventory $inventory;
+    private Equipment $equipment;
 
     /**
      * Character constructor initializes inventory and equipment.

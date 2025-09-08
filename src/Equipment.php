@@ -6,8 +6,8 @@ namespace Game;
  */
 class Equipment
 {
-    public ?string $equippedWeapon = null;
-    public ?string $equippedArmor = null;
+    private ?string $equippedWeapon = null;
+    private ?string $equippedArmor = null;
 
     /**
      * Sets the weapon and armor for an equipment
