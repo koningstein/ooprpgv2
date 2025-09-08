@@ -23,9 +23,10 @@ class Battle
 
         while ($fighter1Stats->getHealth() > 0 && $fighter2Stats->getHealth() > 0 && $round <= $this->maxRounds) {
             // Fighter 1 attacks Fighter 2
-            $damage = max(0, $fighter1Stats->getAttack() - $fighter2Stats->getDefense());
+            $damage = $this->calculateDamage($fighter1, $fighter2);
             $before = $fighter2Stats->getHealth();
-            $this->battleLog[] = "Round $round: {$fighter1->getName()} attacks {$fighter2->getName()} (Health before: $before)";
+            $this->battleLog[] = "Round $round: (Health before: $before)";
+            $this->logAttack($fighter1, $fighter2, $damage);
             $fighter2->takeDamage($damage);
             $after = $fighter2Stats->getHealth();
             $this->battleLog[] = "{$fighter2->getName()} takes $damage damage (Health after: $after)";
@@ -34,9 +35,10 @@ class Battle
             }
 
             // Fighter 2 attacks Fighter 1
-            $damage = max(0, $fighter2Stats->getAttack() - $fighter1Stats->getDefense());
+            $damage = $this->calculateDamage($fighter2, $fighter1);
             $before = $fighter1Stats->getHealth();
-            $this->battleLog[] = "Round $round: {$fighter2->getName()} attacks {$fighter1->getName()} (Health before: $before)";
+            $this->battleLog[] = "Round $round: (Health before: $before)";
+            $this->logAttack($fighter2, $fighter1, $damage);
             $fighter1->takeDamage($damage);
             $after = $fighter1Stats->getHealth();
             $this->battleLog[] = "{$fighter1->getName()} takes $damage damage (Health after: $after)";
@@ -60,6 +62,32 @@ class Battle
     }
 
     /**
+     * Calculates damage based on attacker's attack and defender's defense with random factor
+     * @param Character $attacker
+     * @param Character $defender
+     * @return int
+     */
+    private function calculateDamage(Character $attacker, Character $defender): int
+    {
+        $baseDamage = $attacker->getStats()->getAttack() - $defender->getStats()->getDefense();
+        $randomFactor = (rand(70, 100) / 100); // Random factor between 0.7 and 1.0
+        $damage = $baseDamage * $randomFactor;
+        return max(1, (int)$damage); // Minimum 1 damage
+    }
+
+    /**
+     * Logs an attack in the battle log
+     * @param Character $attacker
+     * @param Character $defender
+     * @param int $damage
+     * @return void
+     */
+    private function logAttack(Character $attacker, Character $defender, int $damage): void
+    {
+        $this->battleLog[] = "{$attacker->getName()} attacks {$defender->getName()} for {$damage} damage";
+    }
+
+    /**
      * Change the max rounds of a battle
      * @param int $rounds
      * @return void
@@ -70,6 +98,7 @@ class Battle
     }
 
     /**
+     * Returns the battle log array
      * @return array
      */
     public function getBattleLog(): array
@@ -78,11 +107,11 @@ class Battle
     }
 
     /**
+     * Returns the maximum rounds for a battle
      * @return int
      */
     public function getMaxRounds(): int
     {
         return $this->maxRounds;
     }
-
 }
