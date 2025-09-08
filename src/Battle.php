@@ -6,8 +6,8 @@ namespace Game;
  */
 class Battle
 {
-    public array $battleLog = [];
-    public int $maxRounds = 10;
+    private array $battleLog = [];
+    private int $maxRounds = 10;
 
     /**
      * Simulates a fight between two characters and returns the battle log as HTML.
@@ -23,35 +23,68 @@ class Battle
 
         while ($fighter1Stats->getHealth() > 0 && $fighter2Stats->getHealth() > 0 && $round <= $this->maxRounds) {
             // Fighter 1 attacks Fighter 2
-            $damage = max(0, $fighter1Stats->getAttack() - $fighter2Stats->getDefense());
-            $fighter2Stats->setHealth(max(0, $fighter2Stats->getHealth() - $damage));
-            $this->battleLog[] = "Round $round: {$fighter1->getName()} attacks {$fighter2->getName()} for $damage damage (Health left: {$fighter2Stats->getHealth()})";
-            if ($fighter2Stats->getHealth() <= 0) {
+            $damage = $this->calculateDamage($fighter1, $fighter2);
+            $before = $fighter2Stats->getHealth();
+            $this->battleLog[] = "Round $round: (Health before: $before)";
+            $this->logAttack($fighter1, $fighter2, $damage);
+            $fighter2->takeDamage($damage);
+            $after = $fighter2Stats->getHealth();
+            $this->battleLog[] = "{$fighter2->getName()} takes $damage damage (Health after: $after)";
+            if ($after <= 0) {
                 break;
             }
 
             // Fighter 2 attacks Fighter 1
-            $damage = max(0, $fighter2Stats->getAttack() - $fighter1Stats->getDefense());
-            $fighter1Stats->setHealth(max(0, $fighter1Stats->getHealth() - $damage));
-            $this->battleLog[] = "Round $round: {$fighter2->getName()} attacks {$fighter1->getName()} for $damage damage (Health left: {$fighter1Stats->getHealth()})";
-            if ($fighter1Stats->getHealth() <= 0) {
+            $damage = $this->calculateDamage($fighter2, $fighter1);
+            $before = $fighter1Stats->getHealth();
+            $this->battleLog[] = "Round $round: (Health before: $before)";
+            $this->logAttack($fighter2, $fighter1, $damage);
+            $fighter1->takeDamage($damage);
+            $after = $fighter1Stats->getHealth();
+            $this->battleLog[] = "{$fighter1->getName()} takes $damage damage (Health after: $after)";
+            if ($after <= 0) {
                 break;
             }
 
             $round++;
         }
 
-        // Determine result
         if ($fighter1Stats->getHealth() > 0 && $fighter2Stats->getHealth() <= 0) {
             $this->battleLog[] = "{$fighter1->getName()} wins!";
         } elseif ($fighter2Stats->getHealth() > 0 && $fighter1Stats->getHealth() <= 0) {
             $this->battleLog[] = "{$fighter2->getName()} wins!";
         } else {
-            $this->battleLog[] = "Draw! No winner after $this->maxRounds rounds.";
+            $this->battleLog[] = "Draw! No winner after {$this->maxRounds} rounds.";
         }
         $fighter1->getStats()->resetHealth();
         $fighter2->getStats()->resetHealth();
         return "<ul><li>" . implode("</li><li>", $this->battleLog) . "</li></ul>";
+    }
+
+    /**
+     * Calculates damage based on attacker's attack and defender's defense with random factor
+     * @param Character $attacker
+     * @param Character $defender
+     * @return int
+     */
+    private function calculateDamage(Character $attacker, Character $defender): int
+    {
+        $baseDamage = $attacker->getStats()->getAttack() - $defender->getStats()->getDefense();
+        $randomFactor = (rand(70, 100) / 100); // Random factor between 0.7 and 1.0
+        $damage = $baseDamage * $randomFactor;
+        return max(1, (int)$damage); // Minimum 1 damage
+    }
+
+    /**
+     * Logs an attack in the battle log
+     * @param Character $attacker
+     * @param Character $defender
+     * @param int $damage
+     * @return void
+     */
+    private function logAttack(Character $attacker, Character $defender, int $damage): void
+    {
+        $this->battleLog[] = "{$attacker->getName()} attacks {$defender->getName()} for {$damage} damage";
     }
 
     /**
@@ -64,5 +97,21 @@ class Battle
         $this->maxRounds = $rounds;
     }
 
+    /**
+     * Returns the battle log array
+     * @return array
+     */
+    public function getBattleLog(): array
+    {
+        return $this->battleLog;
+    }
 
+    /**
+     * Returns the maximum rounds for a battle
+     * @return int
+     */
+    public function getMaxRounds(): int
+    {
+        return $this->maxRounds;
+    }
 }

@@ -13,11 +13,12 @@ use Game\CharacterStats;
 use Game\Equipment;
 use Game\Item;
 use Game\Wallet;
+use Game\Inventory;
 
 // Jaina
 $jainaStats = new CharacterStats();
 echo $jainaStats->setStats(150, 20, 15) . "<br>";
-$jaina = new Character();
+$jaina = new Character(12);
 echo $jaina->setCharacter("Jaina", "Warrior", $jainaStats) . "<br>";
 $jainaEquipment = new Equipment();
 echo $jainaEquipment->setEquipment(null, null) . "<br>";
@@ -25,11 +26,13 @@ $jainaWallet = new Wallet();
 echo $jainaWallet->setGold(100) . "<br>";
 $jainaSword = new Item();
 echo $jainaSword->setItem("Steel Sword", "Weapon", 30, 10, 0, 0, "None") . "<br>";
+$jaina->getInventory()->addItem($jainaSword);
+$jaina->equipWeapon($jaina->getInventory()->getItem("Steel Sword"));
 
 // Aria
 $ariaStats = new CharacterStats();
 echo $ariaStats->setStats(110, 30, 5) . "<br>";
-$aria = new Character();
+$aria = new Character(8);
 echo $aria->setCharacter("Aria", "Archer", $ariaStats) . "<br>";
 $ariaEquipment = new Equipment();
 echo $ariaEquipment->setEquipment("Longbow", null) . "<br>";
@@ -37,6 +40,7 @@ $ariaWallet = new Wallet();
 echo $ariaWallet->setGold(100) . "<br>";
 $ariaRing = new Item();
 echo $ariaRing->setItem("Magic Ring", "accessory", 250, 15) . "<br>";
+$aria->getInventory()->addItem($ariaRing);
 
 // Thorgar
 $thorgarStats = new CharacterStats();
@@ -49,72 +53,47 @@ $thorgarWallet = new Wallet();
 echo $thorgarWallet->setGold(180) . "<br>";
 $thorgarPotion = new Item();
 echo $thorgarPotion->setItem("Mana Potion", "consumable", 40, 0, 0, 20) . "<br>";
+$thorgar->getInventory()->addItem($thorgarPotion);
 
-$characters = [
-    [
-        'character' => $jaina,
-        'stats' => $jainaStats,
-        'equipment' => $jainaEquipment,
-        'wallet' => $jainaWallet,
-        'item' => $jainaSword
-    ],
-    [
-        'character' => $aria,
-        'stats' => $ariaStats,
-        'equipment' => $ariaEquipment,
-        'wallet' => $ariaWallet,
-        'item' => $ariaRing
-    ],
-    [
-        'character' => $thorgar,
-        'stats' => $thorgarStats,
-        'equipment' => $thorgarEquipment,
-        'wallet' => $thorgarWallet,
-        'item' => $thorgarPotion
-    ]
-];
+$characters = [$jaina, $aria, $thorgar];
 
 echo "<table>";
 echo "<tr>
-        <th>Name</th>
-        <th>Role</th>
-        <th>Health</th>
-        <th>Attack</th>
-        <th>Defense</th>
-        <th>Weapon</th>
-        <th>Armor</th>
-        <th>Gold</th>
-        <th>Item Name</th>
-        <th>Item Type</th>
-        <th>Item Value</th>
-        <th>Item Attack Bonus</th>
-        <th>Item Defense Bonus</th>
-        <th>Item Health Bonus</th>
-        <th>Item Special Effect</th>
-      </tr>";
+  <th>Name</th>
+  <th>Role</th>
+  <th>Health</th>
+  <th>Attack</th>
+  <th>Defense</th>
+  <th>Equipment</th>
+  <th>Inventory</th>
+</tr>";
 
-foreach ($characters as $character) {
-    $char = $character['character'];
-    $stats = $character['stats'];
-    $equip = $character['equipment'];
-    $wallet = $character['wallet'];
-    $item = $character['item'];
+foreach ($characters as $char) {
+    $stats = $char->getStats();
+    $equip = $char->getEquipment();
+    $inventory = $char->getInventory();
+
+    // Inventory items as list
+    $itemList = "<ul>";
+    foreach ($inventory->getAllItems() as $item) {
+        $itemList .= "<li>{$item->getName()} ({$item->getType()}, Value: {$item->getValue()})</li>";
+    }
+    $itemList .= "</ul>";
+
+    // Equipment as list
+    $equipmentList = "<ul>";
+    $equipmentList .= "<li>Weapon: " . $equip->getEquippedWeapon() . "</li>";
+    $equipmentList .= "<li>Armor: " . $equip->getEquippedArmor() . "</li>";
+    $equipmentList .= "</ul>";
+
     echo "<tr>";
     echo "<td>" . $char->getName() . "</td>";
     echo "<td>" . $char->getRole() . "</td>";
     echo "<td>" . $stats->getHealth() . "</td>";
     echo "<td>" . $stats->getAttack() . "</td>";
     echo "<td>" . $stats->getDefense() . "</td>";
-    echo "<td>" . $equip->getEquippedWeapon() . "</td>";
-    echo "<td>" . $equip->getEquippedArmor() . "</td>";
-    echo "<td>" . $wallet->getGold() . "</td>";
-    echo "<td>" . $item->getName() . "</td>";
-    echo "<td>" . $item->getType() . "</td>";
-    echo "<td>" . $item->getValue() . "</td>";
-    echo "<td>" . $item->getAttackBonus() . "</td>";
-    echo "<td>" . $item->getDefenseBonus() . "</td>";
-    echo "<td>" . $item->getHealthBonus() . "</td>";
-    echo "<td>" . $item->getSpecialEffect() . "</td>";
+    echo "<td>" . $equipmentList . "</td>";
+    echo "<td>" . $itemList . "</td>";
     echo "</tr>";
 }
 echo "</table>";
@@ -130,13 +109,22 @@ echo "<p>Jaina health after taking 50 damage: " . $jaina->getStats()->getHealth(
 $jaina->takeDamage(100);
 echo "<p>Jaina health after taking 100 damage: " . $jaina->getStats()->getHealth() . "</p>";
 
-// Test Battle functionality
-$battle = new Battle();
-echo $battle->startFight($aria, $thorgar);
 
+// Start first fight
+$battle1 = new Battle();
+$result1 = $battle1->startFight($aria, $thorgar);
+echo "<h3>First Battle Result</h3>";
+echo $result1;
+
+// Reset health of both characters
+$aria->getStats()->resetHealth();
+$thorgar->getStats()->resetHealth();
+
+// Start second fight
 $battle2 = new Battle();
-$battle2->changeMaxRounds(4);
-echo $battle2->startFight($aria, $thorgar);
+$result2 = $battle2->startFight($aria, $thorgar);
+echo "<h3>Second Battle Result</h3>";
+echo $result2;
 
 //var_dump($hero);
 //var_dump($heroStats);

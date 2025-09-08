@@ -6,10 +6,10 @@ namespace Game;
  */
 class CharacterStats
 {
-    public int $health;
-    public int $attack;
-    public int $defense;
-    public ?int $originalHealth = null;
+    private int $health;
+    private int $attack;
+    private int $defense;
+    private ?int $originalHealth = null;
 
     /**
      * Create statistics for a Character with health, attack and defense
