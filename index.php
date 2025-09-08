@@ -109,13 +109,22 @@ echo "<p>Jaina health after taking 50 damage: " . $jaina->getStats()->getHealth(
 $jaina->takeDamage(100);
 echo "<p>Jaina health after taking 100 damage: " . $jaina->getStats()->getHealth() . "</p>";
 
-// Test Battle functionality
-$battle = new Battle();
-echo $battle->startFight($aria, $thorgar);
 
+// Start first fight
+$battle1 = new Battle();
+$result1 = $battle1->startFight($aria, $thorgar);
+echo "<h3>First Battle Result</h3>";
+echo $result1;
+
+// Reset health of both characters
+$aria->getStats()->resetHealth();
+$thorgar->getStats()->resetHealth();
+
+// Start second fight
 $battle2 = new Battle();
-$battle2->changeMaxRounds(4);
-echo $battle2->startFight($aria, $thorgar);
+$result2 = $battle2->startFight($aria, $thorgar);
+echo "<h3>Second Battle Result</h3>";
+echo $result2;
 
 //var_dump($hero);
 //var_dump($heroStats);
