@@ -15,6 +15,15 @@ $smarty = new Smarty();
 $smarty->setTemplateDir('templates/');
 $smarty->setCompileDir('templates_c/');
 
+// Check for 'page' GET parameter
+$page = $_GET['page'] ?? '';
+
+// Show create character form if requested
+if ($page === 'createCharacter') {
+    $smarty->display('createCharacterForm.tpl');
+    exit;
+}
+
 // Jaina
 $jainaStats = new CharacterStats();
 $jainaStats->setStats(150, 20, 15) . "<br>";
