@@ -170,6 +170,9 @@
                         <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="index.php?page=createCharacter">Create Character</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="">New link</a>
                     </li>
                 </ul>
