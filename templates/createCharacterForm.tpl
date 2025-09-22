@@ -3,6 +3,11 @@
 {block name="content"}
 <div class="row justify-content-center mt-5">
     <div class="col-md-8 col-lg-6">
+        {if isset($error)}
+            <div class="alert alert-danger text-center" role="alert">
+                {$error}
+            </div>
+        {/if}
         <div class="card shadow">
             <div class="card-header bg-primary text-white">
                 <h4 class="mb-0">Create New Character</h4>

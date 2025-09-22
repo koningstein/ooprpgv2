@@ -24,6 +24,32 @@ if ($page === 'createCharacter') {
     exit;
 }
 
+// Handle POST: create character
+if (!empty($_POST['name']) && !empty($_POST['role']) && !empty($_POST['health']) &&
+    !empty($_POST['attack']) && !empty($_POST['defense']) && !empty($_POST['maxInventorySlots'])
+) {
+    $name = $_POST['name'];
+    $role = $_POST['role'];
+    $health = (int)$_POST['health'];
+    $attack = (int)$_POST['attack'];
+    $defense = (int)$_POST['defense'];
+    $maxInventorySlots = (int)$_POST['maxInventorySlots'];
+
+    $stats = new CharacterStats();
+    $stats->setStats($health, $attack, $defense);
+    $character = new Character($maxInventorySlots);
+    $character->setCharacter($name, $role, $stats);
+
+    $smarty->assign('newCharacter', $character);
+    $smarty->display('characterCreated.tpl');
+    exit;
+} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Missing fields
+    $smarty->assign('error', 'Please fill in all required fields.');
+    $smarty->display('createCharacterForm.tpl');
+    exit;
+}
+
 // Jaina
 $jainaStats = new CharacterStats();
 $jainaStats->setStats(150, 20, 15) . "<br>";
@@ -85,7 +111,8 @@ $smarty->assign('battleResult2', $result2);
 
 // Display the template
 $smarty->display('gameOverview.tpl');
-
+echo "<pre>";
+var_dump($battle1);
 //var_dump($hero);
 //var_dump($heroStats);
 //var_dump($heroEquipment);
