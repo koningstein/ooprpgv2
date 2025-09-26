@@ -52,7 +52,7 @@ class Character
      * Sets the character's name.
      * @param string $name
      * @return string
-    */
+     */
     public function setName(string $name): string
     {
         if (empty($name)) {
