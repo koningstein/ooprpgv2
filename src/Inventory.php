@@ -99,4 +99,13 @@ class Inventory
     {
         return empty($this->items);
     }
+
+    /**
+     * Returns the maximum number of slots in the inventory.
+     * @return int
+     */
+    public function getMaxSlots(): int
+    {
+        return $this->maxSlots;
+    }
 }
