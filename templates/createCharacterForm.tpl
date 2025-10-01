@@ -3,13 +3,17 @@
 {block name="content"}
 <div class="row justify-content-center mt-5">
     <div class="col-md-8 col-lg-6">
+        {if isset($error)}
+            <div class="alert alert-danger text-center" role="alert">
+                {$error}
+            </div>
+        {/if}
         <div class="card shadow">
             <div class="card-header bg-primary text-white">
                 <h4 class="mb-0">Create New Character</h4>
             </div>
             <div class="card-body">
-                <form action="index.php" method="POST">
-                    <input type="hidden" name="action" value="createCharacter">
+                <form action="index.php?page=createCharacter" method="POST">
                     <div class="mb-3">
                         <label for="name" class="form-label">Character Name</label>
                         <input type="text" class="form-control" id="name" name="name" required placeholder="Enter character name">

@@ -18,6 +18,30 @@ $smarty->setCompileDir('templates_c/');
 // Check for 'page' GET parameter
 $page = $_GET['page'] ?? '';
 
+// Handle POST: create character
+if ($page === 'createCharacter' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $required = ['name', 'role', 'health', 'attack', 'defense', 'maxInventorySlots'];
+    $missingFields = [];
+    foreach ($required as $field) {
+        if (empty($_POST[$field])) {
+            $missingFields[] = ucfirst($field);
+        }
+    }
+    if (!empty($missingFields)) {
+        $errorMsg = 'Please fill in the following fields: ' . implode(', ', $missingFields) . '.';
+        $smarty->assign('error', $errorMsg);
+        $smarty->display('createCharacterForm.tpl');
+        exit;
+    }
+    $stats = new CharacterStats();
+    $stats->setStats((int)$_POST['health'], (int)$_POST['attack'], (int)$_POST['defense']);
+    $character = new Character((int)$_POST['maxInventorySlots']);
+    $character->setCharacter($_POST['name'], $_POST['role'], $stats);
+
+    $smarty->assign('newCharacter', $character);
+    $smarty->display('characterCreated.tpl');
+    exit;
+}
 // Show create character form if requested
 if ($page === 'createCharacter') {
     $smarty->display('createCharacterForm.tpl');
@@ -85,7 +109,8 @@ $smarty->assign('battleResult2', $result2);
 
 // Display the template
 $smarty->display('gameOverview.tpl');
-
+echo "<pre>";
+var_dump($battle1);
 //var_dump($hero);
 //var_dump($heroStats);
 //var_dump($heroEquipment);
