@@ -173,6 +173,9 @@
                         <a class="nav-link" href="index.php?page=createCharacter">Create Character</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="index.php?page=characterList">Character List</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="">New link</a>
                     </li>
                 </ul>
