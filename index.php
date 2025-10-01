@@ -18,34 +18,32 @@ $smarty->setCompileDir('templates_c/');
 // Check for 'page' GET parameter
 $page = $_GET['page'] ?? '';
 
-// Show create character form if requested
-if ($page === 'createCharacter') {
-    $smarty->display('createCharacterForm.tpl');
-    exit;
-}
-
 // Handle POST: create character
-if (!empty($_POST['name']) && !empty($_POST['role']) && !empty($_POST['health']) &&
-    !empty($_POST['attack']) && !empty($_POST['defense']) && !empty($_POST['maxInventorySlots'])
-) {
-    $name = $_POST['name'];
-    $role = $_POST['role'];
-    $health = (int)$_POST['health'];
-    $attack = (int)$_POST['attack'];
-    $defense = (int)$_POST['defense'];
-    $maxInventorySlots = (int)$_POST['maxInventorySlots'];
-
+if ($page === 'createCharacter' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $required = ['name', 'role', 'health', 'attack', 'defense', 'maxInventorySlots'];
+    $missingFields = [];
+    foreach ($required as $field) {
+        if (empty($_POST[$field])) {
+            $missingFields[] = ucfirst($field);
+        }
+    }
+    if (!empty($missingFields)) {
+        $errorMsg = 'Please fill in the following fields: ' . implode(', ', $missingFields) . '.';
+        $smarty->assign('error', $errorMsg);
+        $smarty->display('createCharacterForm.tpl');
+        exit;
+    }
     $stats = new CharacterStats();
-    $stats->setStats($health, $attack, $defense);
-    $character = new Character($maxInventorySlots);
-    $character->setCharacter($name, $role, $stats);
+    $stats->setStats((int)$_POST['health'], (int)$_POST['attack'], (int)$_POST['defense']);
+    $character = new Character((int)$_POST['maxInventorySlots']);
+    $character->setCharacter($_POST['name'], $_POST['role'], $stats);
 
     $smarty->assign('newCharacter', $character);
     $smarty->display('characterCreated.tpl');
     exit;
-} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Missing fields
-    $smarty->assign('error', 'Please fill in all required fields.');
+}
+// Show create character form if requested
+if ($page === 'createCharacter') {
     $smarty->display('createCharacterForm.tpl');
     exit;
 }

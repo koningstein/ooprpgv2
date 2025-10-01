@@ -13,8 +13,7 @@
                 <h4 class="mb-0">Create New Character</h4>
             </div>
             <div class="card-body">
-                <form action="index.php" method="POST">
-                    <input type="hidden" name="action" value="createCharacter">
+                <form action="index.php?page=createCharacter" method="POST">
                     <div class="mb-3">
                         <label for="name" class="form-label">Character Name</label>
                         <input type="text" class="form-control" id="name" name="name" required placeholder="Enter character name">

@@ -37,6 +37,10 @@
                         <td>{$newCharacter->getInventory()->getMaxSlots()}</td>
                     </tr>
                 </table>
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="index.php?page=createCharacter" class="btn btn-primary">Create Another Character</a>
+                    <a href="index.php?page=characterList" class="btn btn-secondary">View Character List</a>
+                </div>
             </div>
         </div>
         <a href="index.php" class="btn btn-primary w-100">Back to Overview</a>
