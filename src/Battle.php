@@ -63,6 +63,4 @@ class Battle
     {
         $this->maxRounds = $rounds;
     }
-
-
 }
